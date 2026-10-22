@@ -46,7 +46,7 @@ function App() {
         <>
             <h1>My ToDo ({todoList.length}</h1>
             <form onSubmit={handleSubmit}>
-                <input type={"text"} placeholder={"Write your to do..."} onChange={(event) => { setTodoValue(event.target.value)}}/>
+                <input type={"text"} placeholder={"Write your to do..."} onChange={(event) => { setTodoValue(event.target.value)}}
                 <button type="submit">Add To Do</button>
             </form>
             <hr />
