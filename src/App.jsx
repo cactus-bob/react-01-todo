@@ -1,28 +1,34 @@
 import {useState} from "react";
 
 function App() {
-    const [count, setCount] = useState(0);
+    // 컴포넌트를 만들 때 처음 해야되는건, 내가 원하는 모양을 구상하고
+    // 그 원하는 걸 만들어낼 때 필요한 state에 대해서 생각해봄
+
+    // 1. 투두 리스트의 갯수를 관리할 state  => number   => 2번을 보니까 array고, length를 구하면 갯수가 나오네? => 필요없겠다
+    // 2. 투두 리스트 목록을 관리할 state   => 어떠한 모양이 되어야 하냐 => 목록이니까 array겠다 => 그 안엔 string이 들어가겠다
+    const [todoList, setTodoList] = useState([]);     // To Do 리스트를 저장할 state 선언 -> 초기값은 요소를 갖지 않은 []
+
+    // 더 이상 코드를 쓸 건 없고, 초기 렌더링을 위한 모양을 잡아보자
 
     return (
-        <div>
-            현재 Count : {count}
-            <button onClick={() => setCount(count + 1)}>+</button>
-            <button onClick={() => setCount(count - 1)}>-</button>
-        </div>
-    );
-
-    // 초기 렌더링 : App() 최초 실행
-    //              count라고 하는 특수 변수를 초기값 0 으로 마련해서
-    //              return 안에 있는 내용을 브라우저에게 전달
-
-    // 리렌더링
-    //        1. + 버튼을 사용자가 누를 때
-    //               onClick에 제공된 함수가 발동해서 setCount(count + 1), 즉 count state의 값을 +1 해서 저장하게 되고
-    //                       그러면 count를 감시하던 React엔진이 바뀜을 감지하고 화면에 쓰여진 count 부분을 리렌더링
-    //                                                             App 전체가 다시 그려지는게 아니라, count부분만 리렌더링
-    //        2. - 버튼을 사용자가 누를 때
-    //               onClick에 제공된 함수가 발동해서 setCount(count - 1), 즉 count state의 값을 -1 해서 저장하게 되고
-    //                       그러면 count를 감시하던 React엔진이 바뀜을 감지하고 화면에 쓰여진 count 부분을 리렌더링
+        <>
+            <h1>My ToDo ({todoList.length})</h1>
+            <form>
+                {/*
+                    form 태그는 사용자가 입력하는 input을 묶어서 한 번에 전송하기 위해
+                    존재하는 태그
+                 */}
+                <input type={"text"} placeholder={"Write your to do..."} />
+                <button type="submit">Add To Do</button>
+            </form>
+            <hr />
+            <ul>
+                <li>더미</li>
+                <li>데이터</li>
+                <li>투두 추가</li>
+            </ul>
+        </>
+    )
 }
 
 export default App;
